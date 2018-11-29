@@ -1,0 +1,61 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\NPham\Documents\ES100\ES100win\Receiver_rev01.PcbDoc
+Date     : 11/27/2018
+Time     : 6:38:32 PM
+
+Processing Rule : Clearance Constraint (Gap=12mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=10mil) (Max=100mil) (Preferred=20mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=200mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=7.5mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=7.5mil) (IsPad),(All)
+   Violation between Silk To Solder Mask Clearance Constraint: (7.262mil < 7.5mil) Between Pad U3-1(2974.134mil,1805mil) on Multi-Layer And Track (2943.032mil,1805mil)(2943.032mil,1884.528mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [7.262mil]
+Rule Violations :1
+
+Processing Rule : Silk to Silk (Clearance=7.5mil) (All),(All)
+   Violation between Silk To Silk Clearance Constraint: (5.402mil < 7.5mil) Between Text "1" (1040mil,1500mil) on Top Overlay And Track (870mil,1530mil)(1070mil,1530mil) on Top Overlay Silk Text to Silk Clearance [5.402mil]
+   Violation between Silk To Silk Clearance Constraint: (2.063mil < 7.5mil) Between Text "5" (1040mil,1840mil) on Top Overlay And Track (870mil,1830mil)(1070mil,1830mil) on Top Overlay Silk Text to Silk Clearance [2.063mil]
+   Violation between Silk To Silk Clearance Constraint: (2.063mil < 7.5mil) Between Text "6" (940mil,1840mil) on Top Overlay And Track (870mil,1830mil)(1070mil,1830mil) on Top Overlay Silk Text to Silk Clearance [2.063mil]
+   Violation between Silk To Silk Clearance Constraint: (5.019mil < 7.5mil) Between Text "R2" (2299.134mil,1925mil) on Top Overlay And Text "R4" (2219.134mil,2000mil) on Top Overlay Silk Text to Silk Clearance [5.019mil]
+   Violation between Silk To Silk Clearance Constraint: (5.422mil < 7.5mil) Between Text "R5" (2084.134mil,1762.402mil) on Top Overlay And Track (2194.409mil,1581.299mil)(2194.409mil,1762.402mil) on Top Overlay Silk Text to Silk Clearance [5.422mil]
+   Violation between Silk To Silk Clearance Constraint: (5.422mil < 7.5mil) Between Text "R5" (2084.134mil,1762.402mil) on Top Overlay And Track (2194.41mil,1762.402mil)(2603.858mil,1762.402mil) on Top Overlay Silk Text to Silk Clearance [5.422mil]
+Rule Violations :6
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Room Receiver_1 (Bounding Region = (3369.134mil, 2270mil, 4380mil, 2390mil) (InComponentClass('Room Definition 1'))
+Rule Violations :0
+
+Processing Rule : Room Receiver (Bounding Region = (1930mil, 2890mil, 5830mil, 5250mil) (InComponentClass('Receiver'))
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+
+Violations Detected : 7
+Waived Violations : 0
+Time Elapsed        : 00:00:01

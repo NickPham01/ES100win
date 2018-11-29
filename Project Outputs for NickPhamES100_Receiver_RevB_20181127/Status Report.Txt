@@ -1,0 +1,15 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [NickPhamES100_Receiver_RevB_20181127.PrjPcb]
+   Generated File[Receiver_rev01.GTL]
+   Generated File[Receiver_rev01.GBL]
+   Generated File[Receiver_rev01.GD1]
+   Generated File[Receiver_rev01.RUL]
+   Generated File[Receiver_rev01.EXTREP]
+   Generated File[Receiver_rev01.REP]
+
+
+Files Generated   : 6
+Documents Printed : 0
+
+Finished Output Generation At 6:43:52 PM On 11/27/2018
