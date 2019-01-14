@@ -9,6 +9,7 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
+#include <stdint.h>
 
 /************************************************************************/
 /* Pin Definitions                                                                     */
@@ -69,6 +70,19 @@ uint8_t updateBlink(void) {
 	return 0;
 }
 
+void setLED(uint8_t status) {
+	if (status) {
+		bitON(PORTC, LEDPIN);
+	}
+	else {
+		bitOFF(PORTC, LEDPIN);
+	}
+}
+
+/************************************************************************/
+/* uC Initializations                                                                     */
+/************************************************************************/
+
 void initializePins(void) {
 	/* Set Vcc Select pins data direction to outputs */
 	bitON(DDRA, VCC_SLT_9V_PIN);
@@ -84,15 +98,6 @@ void initializePins(void) {
 	
 	bitON(PUEA, P_DETECT0_PIN);
 	bitON(PUEB, P_DETECT1_PIN);
-}
-
-void setLED(uint8_t status) {
-	if (status) {
-		bitON(PORTC, LEDPIN);
-	}
-	else {
-		bitOFF(PORTC, LEDPIN);
-	}
 }
 
 /************************************************************************/
@@ -162,74 +167,71 @@ void setRelay(uint8_t relayState) {
 	activateRelay(relayState);	// engerize the relay coil in the derired direction
 	_delay_ms(20);				// wait to ensure coil has been activated properly
 	activateRelay(IDLE);		// set coil back to idle
+	setLED(relayState);
 }
 
 /************************************************************************/
 /* Plate Detection                                                                 */
 /************************************************************************/
 
+uint8_t readVccSwitch(void) {
+	/* Read the sensors */
+	uint8_t data = 0x00;
+	data |= (PINA & (1<<VCC_SLT_IN0_PIN))>>VCC_SLT_IN0_PIN;			// set 0th bit
+	data |= ((PINA & (1<<VCC_SLT_IN1_PIN))>>VCC_SLT_IN1_PIN)<<1;	// set 1st bit
+	
+	/* Decode data into desired voltage */
+	switch(data) {
+		case 0x00:
+		return 9;
+		break;
+		case 0x01:
+		return 12;
+		break;
+		case 0x02:
+		return 18;
+		break;
+		default:
+		return 9;
+	}
+}
+
 uint8_t readPlateSensor(void) {
 	
 	/* Initialize and read the ports into the two lowest bits */
 	uint8_t data = 0x00;
-	uint8_t data0 = (P_DETECT0_PORT & (1<<P_DETECT0_PIN))>>P_DETECT0_PIN;
-	uint8_t data1 = (P_DETECT1_PORT & (1<<P_DETECT1_PIN))>>P_DETECT1_PIN;
-	data = data | data0 | (data1<<1);
-	
+	data |= (PINA & (1<<P_DETECT0_PIN))>>P_DETECT0_PIN;			// set 0th bit
+	data |= ((PINB & (1<<P_DETECT1_PIN))>>P_DETECT1_PIN)<<1;	// set 1st bit
+
 	/*  The lowest two bits contain active low values of the plate sensor
 		i.e. data = 0x03 if both switches are triggered and a plate is
 		present.  Now invert these bits with XOR */
 	data ^= 0x03;
-	return data0;
+	return data;
 }
 	
-
 uint8_t checkForPlateChange(uint8_t prevKnownState) {
 	/*	There are only 2 sensors, using the 2 lowest bits of the state
-		variable, so checkForPlateChange() returns -1 if the state
+		variable, so checkForPlateChange() returns UINT8_MAX (255) if the state
 		hasn't changed. */
 	
 	uint8_t newState = readPlateSensor();
 
 	if (newState != prevKnownState) {
-		prevKnownState = newState;
 		return newState;
 	}
-	return -1;
+	return UINT8_MAX;
 }
 
-uint8_t readVccSwitch(void) {
-	/* Read the sensors */
-	uint8_t data = 0x00;
-	data |= (VCC_SLT_IN0_PORT & (1<<VCC_SLT_IN0_PIN))>>VCC_SLT_IN0_PIN;	// set 0th bit
-	data |= (VCC_SLT_IN1_PORT & (1<<VCC_SLT_IN1_PIN))>>VCC_SLT_IN1_PIN;	// set 1st bit
-	
-	/* Decode data into desired voltage */
-	switch(data) {
-		case 0x00:
-			return 9;
-			break;
-		case 0x01:
-			return 12;
-			break;
-		case 0x02:
-			return 18;
-			break;
-		default:
-			return 9;
-	}
+inline uint8_t decodePlateState(uint8_t plateState) {
+	return plateState == 0x03 ? ACTIVE : BYPASS;
 }
 
-/*
-uint8_t decodePlateState(void) {
-	
+inline void updateOutputs(uint8_t plateState) {
+	setVcc(readVccSwitch());		// no need to de-bounce, since we've already waited for the plate detect pins to bounce
+	setRelay(decodePlateState(plateState));
 }
 
-void updateOutputs(void) {
-	setVcc(readVccSwitch());		// no need to debounce, since we've already waited for the plate detect pins to bounce
-	setRelay(decodePlateState());
-}
-*/
 
 /************************************************************************/
 /* Main Function                                                                     */
@@ -244,6 +246,7 @@ int main(void) {
 	uint8_t relayState = BYPASS;
 	setRelay(relayState);
 
+	/* Indicate that the chip has been flashed */
 	for (uint8_t i = 0; i < 4; i++) {
 		setLED(1);
 		_delay_ms(100);
@@ -251,13 +254,17 @@ int main(void) {
 		_delay_ms(100);
 	}
 
-	while(1) {
+	uint8_t prevPlateState = UINT8_MAX - 1;
+	uint8_t newPlateState = 0;
 
-		if (readPlateSensor() != 0) {
-			setLED(1);
-		}
-		else {
-			setLED(0);
+	while(1) {
+		// check if the state of the pins has changed
+		newPlateState = checkForPlateChange(prevPlateState);
+		if (newPlateState != UINT8_MAX) {
+			prevPlateState = newPlateState;
+		
+			// if so, decode and set the new outputs
+			updateOutputs(newPlateState);
 		}
 	}
 
