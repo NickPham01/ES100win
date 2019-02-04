@@ -98,6 +98,13 @@ void initializePins(void) {
 	
 	bitON(PUEA, P_DETECT0_PIN);
 	bitON(PUEB, P_DETECT1_PIN);
+	
+	/* Set power select pins data direction to inputs and enable pullups */
+	bitOFF(DDRA, VCC_SLT_IN0_PIN);
+	bitOFF(DDRA, VCC_SLT_IN1_PIN);
+	
+	bitON(PUEA, VCC_SLT_IN0_PIN);
+	bitON(PUEA, VCC_SLT_IN1_PIN);
 }
 
 /************************************************************************/
