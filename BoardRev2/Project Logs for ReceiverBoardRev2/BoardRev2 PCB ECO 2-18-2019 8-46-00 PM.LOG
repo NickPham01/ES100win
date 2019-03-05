@@ -1,0 +1,20 @@
+Removed Member From Class: ClassName=UI Member=P19
+Change Component Footprint: Designator=C17 Old Footprint=RB7.6-15 New Footprint=CapPol_2mmPitch
+Change Component Footprint: Designator=C20 Old Footprint=RB7.6-15 New Footprint=CapPol_2mmPitch
+Change Component Footprint: Designator=C22 Old Footprint=RB7.6-15 New Footprint=CapPol_2mmPitch
+Change Component Footprint: Designator=C25 Old Footprint=RB7.6-15 New Footprint=CapPol_2mmPitch
+Change Component Footprint: Designator=C30_Receiver1 Old Footprint=RB7.6-15 New Footprint=CapPol_2mmPitch
+Change Component Footprint: Designator=C30_Receiver2 Old Footprint=RB7.6-15 New Footprint=CapPol_2mmPitch
+Change component parameters: Designator = "C17"; Footprint = "CapPol_2mmPitch"; UniqueID = "\ACYBVRQW\AUOWFIDD"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "C20"; Footprint = "CapPol_2mmPitch"; UniqueID = "\ACYBVRQW\CUUQXJSN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "C22"; Footprint = "CapPol_2mmPitch"; UniqueID = "\ACYBVRQW\EVBNGXBX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "C25"; Footprint = "CapPol_2mmPitch"; UniqueID = "\ACYBVRQW\MELAOFJH"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "C30_Receiver1"; Footprint = "CapPol_2mmPitch"; UniqueID = "\AEAJBHNL\XAEHKKXF"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "C30_Receiver2"; Footprint = "CapPol_2mmPitch"; UniqueID = "\YLJCOYQG\XAEHKKXF"
+Change component parameters. Clean all parameters for all variants
+Added Member To Class: ClassName=UI Member=Component P14 Header 2

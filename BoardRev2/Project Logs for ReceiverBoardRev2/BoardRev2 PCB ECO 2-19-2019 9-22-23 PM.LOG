@@ -1,0 +1,10 @@
+Added Pin To Net: NetName=24V Pin=C31_Receiver1-2
+Added Pin To Net: NetName=24V Pin=C31_Receiver2-2
+Added Pin To Net: NetName=24V Pin=U6_Receiver1-3
+Added Pin To Net: NetName=24V Pin=U6_Receiver2-3
+Added Room: Name=BoardRev2
+Added Room: Name=PWR
+Added Room: Name=Receiver1
+Added Room: Name=Receiver2
+Added Room: Name=Routing
+Added Room: Name=UI

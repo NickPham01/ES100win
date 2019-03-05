@@ -1,0 +1,12 @@
+Change Pin Designator/Name:  Old Designator=U1-12 Old Name=PC2 New Designator =PD3/AIN3 New Name=23
+Change Pin Designator/Name:  Old Designator=U1-13 Old Name=PC3 New Designator =PD2/AIN2 New Name=22
+Change Pin Designator/Name:  Old Designator=U1-20 Old Name=PD0/AIN0 New Designator =PC3 New Name=13
+Change Pin Designator/Name:  Old Designator=U1-21 Old Name=PD1/AIN1 New Designator =PC2 New Name=12
+Change Pin Designator/Name:  Old Designator=U1-22 Old Name=PD2/AIN2 New Designator =PD1/AIN1 New Name=21
+Change Pin Designator/Name:  Old Designator=U1-23 Old Name=PD3/AIN3 New Designator =PD0/AIN0 New Name=20
+Change Pin Designator/Name:  Old Designator=U1-24 Old Name=PD4/AIN4 New Designator =PD7/AIN7/VREFA New Name=27
+Change Pin Designator/Name:  Old Designator=U1-25 Old Name=PD5/AIN5 New Designator =PD6/AIN6 New Name=26
+Change Pin Designator/Name:  Old Designator=U1-26 Old Name=PD6/AIN6 New Designator =PE3/AIN11 New Name=33
+Change Pin Designator/Name:  Old Designator=U1-27 Old Name=PD7/AIN7/VREFA New Designator =PE2/AIN10 New Name=32
+Change Pin Designator/Name:  Old Designator=U1-32 Old Name=PE2/AIN10 New Designator =PD5/AIN5 New Name=25
+Change Pin Designator/Name:  Old Designator=U1-33 Old Name=PE3/AIN11 New Designator =PD4/AIN4 New Name=24

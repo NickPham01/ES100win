@@ -1,0 +1,7 @@
+Change Net Name : Old Net Name=NetP1_2 New Net Name=Detect0
+Change Net Name : Old Net Name=NetP1_3 New Net Name=Detect1
+Change Net Name : Old Net Name=NetP1_4 New Net Name=PWR_SLT0
+Change Net Name : Old Net Name=NetP1_5 New Net Name=PWR_SLT1
+Change Net Name : Old Net Name=NetP1_7 New Net Name=VCC
+Change Net Name : Old Net Name=NetP1_9 New Net Name=SEND
+Change Net Name : Old Net Name=NetP1_11 New Net Name=RETURN
