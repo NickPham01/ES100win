@@ -1,0 +1,23 @@
+*************************************************************
+FileName = SMDLEDFixture.GBR
+AutoAperture = True
+*************************************************************
+Generating : Top Layer
+      File : SMDLEDFixture.GTL
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Mechanical 1
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+    D14
+    D15
+*************************************************************
+

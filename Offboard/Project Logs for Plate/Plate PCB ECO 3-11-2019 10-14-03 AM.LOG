@@ -1,0 +1,12 @@
+Change Component Designator: OldDesignator=J1 NewDesignator=Detect1
+Change Component Designator: OldDesignator=J2 NewDesignator=GND
+Change Component Designator: OldDesignator=J3 NewDesignator=SEND
+Change Component Designator: OldDesignator=J4 NewDesignator=GND
+Change Component Designator: OldDesignator=J5 NewDesignator=Detect0
+Change Component Designator: OldDesignator=J6 NewDesignator=PWRSLT1
+Change Component Designator: OldDesignator=J7 NewDesignator=PWRSLT0
+Change Component Designator: OldDesignator=J8 NewDesignator=VCC
+Change Component Designator: OldDesignator=J9 NewDesignator=RETURN
+Change Net Name : Old Net Name=NetJ2_1 New Net Name=NetGND_1
+Change Net Name : Old Net Name=NetJ8_1 New Net Name=NetP2_1
+Added Room: Name=Plate

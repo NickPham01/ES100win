@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=Detect0 Pin=GND1-1
+Removed Pin From Net: NetName=Detect0 Pin=P1-1
+Removed Pin From Net: NetName=Detect0 Pin=P3-1
+Removed Pin From Net: NetName=Detect0 Pin=RETURN-1
+Removed Member From Class: ClassName=Plate Member=GND1
+Added Pin To Net: NetName=RETURN Pin=P1-1
+Added Pin To Net: NetName=RETURN Pin=P3-1
+Added Pin To Net: NetName=RETURN Pin=RETURN-1
+Added Net: Name=RETURN
+Added Room: Name=Plate

@@ -1,0 +1,14 @@
+Change Component Designator: OldDesignator=GND NewDesignator=GND1
+Change Component Designator: OldDesignator=GND NewDesignator=GND2
+Added Component: Designator=P7(HDR1X2)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=Detect0 Pin=GND1-1
+Added Pin To Net: NetName=Detect0 Pin=P1-1
+Added Pin To Net: NetName=Detect0 Pin=P3-1
+Added Pin To Net: NetName=NetP2_1 Pin=P7-1
+Added Pin To Net: NetName=Detect0 Pin=P7-2
+Added Member To Class: ClassName=Plate Member=Component GND2 PogoPinElectrode
+Added Member To Class: ClassName=Plate Member=Component P7 Header 2

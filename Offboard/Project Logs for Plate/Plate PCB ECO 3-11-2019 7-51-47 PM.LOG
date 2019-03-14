@@ -1,0 +1,5 @@
+Added Component: Designator=GND1(PogoPinElectrode)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=Detect0 Pin=GND1-1
+Added Member To Class: ClassName=Plate Member=Component GND1 PogoPinElectrode
+Added Room: Name=Plate
