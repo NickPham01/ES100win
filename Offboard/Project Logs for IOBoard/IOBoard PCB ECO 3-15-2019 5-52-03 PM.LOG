@@ -1,0 +1,36 @@
+Added Component: Designator=J1(MNJ6HCD2)
+Add component. Clean all parameters for all variants
+Added Component: Designator=J2(MNJ6HCD2)
+Add component. Clean all parameters for all variants
+Added Component: Designator=J4(MNJ6HCD2)
+Add component. Clean all parameters for all variants
+Added Component: Designator=J5(MNJ6HCD2)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=NetJ1_R Pin=J1-RS
+Added Pin To Net: NetName=NetJ1_R Pin=J1-R
+Added Pin To Net: NetName=NetJ1_R Pin=J1-SS
+Added Pin To Net: NetName=NetJ1_R Pin=J1-S
+Added Pin To Net: NetName=NetJ1_R Pin=J1-TS
+Added Pin To Net: NetName=NetJ1_T Pin=J1-T
+Added Pin To Net: NetName=NetJ2_R Pin=J2-RS
+Added Pin To Net: NetName=NetJ2_R Pin=J2-R
+Added Pin To Net: NetName=NetJ2_R Pin=J2-SS
+Added Pin To Net: NetName=NetJ2_R Pin=J2-S
+Added Pin To Net: NetName=NetJ2_R Pin=J2-TS
+Added Pin To Net: NetName=NetJ2_T Pin=J2-T
+Added Pin To Net: NetName=NetJ4_R Pin=J4-RS
+Added Pin To Net: NetName=NetJ4_R Pin=J4-R
+Added Pin To Net: NetName=NetJ4_R Pin=J4-SS
+Added Pin To Net: NetName=NetJ4_R Pin=J4-S
+Added Pin To Net: NetName=NetJ4_R Pin=J4-TS
+Added Pin To Net: NetName=NetJ4_T Pin=J4-T
+Added Pin To Net: NetName=NetJ5_R Pin=J5-RS
+Added Pin To Net: NetName=NetJ5_R Pin=J5-R
+Added Pin To Net: NetName=NetJ5_R Pin=J5-SS
+Added Pin To Net: NetName=NetJ5_R Pin=J5-S
+Added Pin To Net: NetName=NetJ5_R Pin=J5-TS
+Added Pin To Net: NetName=NetJ5_T Pin=J5-T
+Added Member To Class: ClassName=IOBoard Member=Component J1 NMJ6HCD2
+Added Member To Class: ClassName=IOBoard Member=Component J2 NMJ6HCD2
+Added Member To Class: ClassName=IOBoard Member=Component J4 NMJ6HCD2
+Added Member To Class: ClassName=IOBoard Member=Component J5 NMJ6HCD2
