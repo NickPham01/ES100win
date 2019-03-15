@@ -12,8 +12,13 @@
 /*
 	enums
 */
-enum relayState		{BYPASS, ACTIVE, IDLE};
-enum pinConfig		{INPUT, OUTPUT, PULLUP};
+enum relayState		{RLY_BYPASS, RLY_ACTIVE, RLY_IDLE};
+enum pinConfig		{INPUT_PIN, OUTPUT_PIN, PULLUP_PIN};
+enum receiverState	{RECEIVER_BYPASS, RECEIVER_ACTIVE};
+enum stateUI		{UI_STRAIGHT, UI_CROSS, UI_SUM};
+enum debounceState	{DEBOUNCE_RESET, DEBOUNCE_WAIT};
+enum btnOutputs		{BTN_IDLE, BTN_RISING, BTN_FALLING};	// RISING = depress, FALLING = release
+
 
 
 
@@ -205,8 +210,8 @@ const pin_t *PINS[48] = {
 #define bitOFF(REGISTER, BIT)	REGISTER &= ~(1<<BIT)
 #define bitREAD(BYTE, BIT)		((BYTE & (1<<BIT)) >> BIT)
 
-#define gpioON(PIN)				bitON(PINS[PIN]->port->OUT, PINS[PIN]->num)
-#define gpioOFF(PIN)			bitOFF(PINS[PIN]->port->OUT, PINS[PIN]->num)
-#define gpioREAD(PIN)			bitREAD(PINS[PIN]->port->IN, PINS[PIN]->num)
+#define gpioON(PIN)				bitON(PINS[PIN]->p_port->OUT, PINS[PIN]->num)
+#define gpioOFF(PIN)			bitOFF(PINS[PIN]->p_port->OUT, PINS[PIN]->num)
+#define gpioREAD(PIN)			bitREAD(PINS[PIN]->p_port->IN, PINS[PIN]->num)
 
 #endif

@@ -1,0 +1,16 @@
+Added Component: Designator=T1(B65814N1008)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=Net*_3 Pin=T1-3
+Added Pin To Net: NetName=Net*_4 Pin=T1-4
+Change Net Name : Old Net Name=Net*_3 New Net Name=NetP2_2
+Change Net Name : Old Net Name=Net*_4 New Net Name=NetP2_1
+Added Pin To Net: NetName=NetJ3_1 Pin=J3-1
+Added Pin To Net: NetName=NetJ3_1 Pin=J3-1
+Added Pin To Net: NetName=NetJ3_1 Pin=T1-1
+Added Net: Name=NetJ3_1
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-2
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-3
+Added Pin To Net: NetName=NetJ3_2 Pin=T1-2
+Added Net: Name=NetJ3_2
+Added Member To Class: ClassName=IOBoard Member=Component T1 CommonModeChoke
+Added Room: Name=IOBoard

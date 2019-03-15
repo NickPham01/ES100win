@@ -4,8 +4,7 @@
 /***************************************************************
 	DEBOUNCE
 ****************************************************************/
-enum debounceState {RESET, WAIT};
-enum btnOutputs {IDLE, RISING, FALLING};	// RISING = depress, FALLING = release
+
 struct debounceBTN {
 	uint8_t pin;
 	uint8_t curButtonState;
@@ -29,7 +28,6 @@ void updateDebounce(struct debounceBTN btn);
 	a single output.  The state is saved as an enum defined just before the struct.
 ****************************************************************/
 
-enum stateUI {STRAIGHT, CROSS, SUM};
 struct singleOutputUI {
 		/* input pins */
 		uint8_t straightButton;
@@ -61,7 +59,6 @@ void updateUIFSM(struct singleOutputUI fsm);
 /***************************************************************
 	Receiver
 ****************************************************************/
-enum receiverState {BYPASS, ACTIVE};
 struct receiverFSM {
 	/* Input pins */
 	uint8_t detect0;
@@ -84,5 +81,13 @@ struct receiverFSM {
 	
 	enum receiverState state;
 	};
+	
+	struct receiverFSM initReceiver(uint8_t detect0_pin,
+									uint8_t detect1_pin,
+									uint8_t vcc_slt0_pin,
+									uint8_t vcc_slt1_pin,
+									uint8_t vcc9_pin,
+									uint8_t vcc12_pin,
+									uint8_t rly_pin);
 
 #endif

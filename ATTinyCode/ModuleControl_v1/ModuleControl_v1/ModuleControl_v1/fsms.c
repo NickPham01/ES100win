@@ -1,5 +1,6 @@
+#include <util/atomic.h>
 #include "constants.h"
-#include "utilities.h""
+#include "utilities.h"
 #include "fsms.h"
 
 /***************************************************************
@@ -18,12 +19,12 @@ struct debounceBTN initDebounce(uint8_t button_pin) {
 	btn.pin = button_pin;
 	btn.curButtonState = (readUISW() & (1<<btn.pin)) >> btn.pin;	// just get this pin
 	btn.prevButtonState = btn.curButtonState;						// set the current and previous states to the same value
-	btn.debounceTime = 10;								// set debounce time to be 10ms: can change later	
-	btn.debounceStartTime = millis();					// start debounce counter
-	btn.state = WAIT;									// start in the wait state
+	btn.debounceTime = 10;											// set debounce time to be 10ms: can change later	
+	btn.debounceStartTime = millis();								// start debounce counter
+	btn.state = DEBOUNCE_WAIT;										// start in the wait state
 	btn.isDone = 0;
 
-	btn.output = IDLE;
+	btn.output = BTN_IDLE;
 	return btn;
 }
 
@@ -40,26 +41,26 @@ void updateDebounce(struct debounceBTN btn) {
 		btn.curButtonState = gpioREAD(btn.pin);
 		btn.currentTime = millis();
 	}
-	btn.isDone = (btn.currentTime - btn.debounceStartTime >= btn.debounceTime)
+	btn.isDone = (btn.currentTime - btn.debounceStartTime >= btn.debounceTime);
 			
 	/* Update next state based on current state and input+isDone */
 	switch(btn.state) {
-		case RESET:
-			btn.output = IDLE;								// turn off the output assertion
+		case DEBOUNCE_RESET:
+			btn.output = BTN_IDLE;								// turn off the output assertion
 			// if the button is pressed
 			if (btn.curButtonState != btn.prevButtonState) {
 				btn.debounceStartTime = btn.currentTime;	// mark the debounce start
 				btn.isDone = 0;								// set debounce wait flag
-				btn.state = WAIT;							// go to WAIT state
+				btn.state = DEBOUNCE_WAIT;					// go to WAIT state
 			}
 			// else do nothing
 			break;
-		case WAIT:
+		case DEBOUNCE_WAIT:
 			// if the debounce time has elapsed without change
 			if (btn.isDone) {
 				// set output to either rising or falling based on new position after debounce
-				btn.output = btn.curButtonState ? RISING : FALLING;
-				btn.state = RESET;										// go back to reset state
+				btn.output = btn.curButtonState ? BTN_RISING : BTN_FALLING;
+				btn.state = DEBOUNCE_RESET;										// go back to reset state
 			}
 			// if the button position has changed before debounce time is over
 			else if (btn.curButtonState != btn.prevButtonState) {
@@ -95,10 +96,10 @@ struct singleOutputUI initUI(uint8_t straight_button,
 	uiFSM.straightBtn	= initDebounce(uiFSM.straightButton);
 	uiFSM.crossBtn		= initDebounce(uiFSM.crossButton);
 	
-	uiFSM.state = STRAIGHT;
+	uiFSM.state = UI_STRAIGHT;
 	setUIFSMOutputs(uiFSM);
 	
-	return uiFSM
+	return uiFSM;
 }
 	
 
@@ -111,20 +112,20 @@ struct singleOutputUI initUI(uint8_t straight_button,
 void setUIFSMOutputs(struct singleOutputUI fsm) {
 	/* Set outputs based on state */
 	switch(fsm.state) {
-		case STRAIGHT:
-			setRelay(fsm.sumSltRly, BYPASS);
-			setRelay(fsm.abSltRly, BYPASS);
+		case UI_STRAIGHT:
+			setRelay(fsm.sumSltRly, RLY_BYPASS);
+			setRelay(fsm.abSltRly, RLY_BYPASS);
 			setLED(fsm.straightLED, 1);
 			setLED(fsm.crossLED, 0);
 			break;
-		case CROSS:
-			setRelay(fsm.sumSltRly, BYPASS);
-			setRelay(fsm.abSltRly, ACTIVE);
+		case UI_CROSS:
+			setRelay(fsm.sumSltRly, RLY_BYPASS);
+			setRelay(fsm.abSltRly, RLY_ACTIVE);
 			setLED(fsm.straightLED, 0);
 			setLED(fsm.crossLED, 1);
 			break;
-		case SUM:
-			setRelay(fsm.sumSltRly, ACTIVE);
+		case UI_SUM:
+			setRelay(fsm.sumSltRly, RLY_ACTIVE);
 			// no need to change the abSltRly
 			setLED(fsm.straightLED, 1);
 			setLED(fsm.crossLED, 1);
@@ -146,39 +147,39 @@ void updateUIFSM(struct singleOutputUI fsm) {
 	updateDebounce(fsm.straightBtn);
 	updateDebounce(fsm.crossBtn);
 	
-	uint8_t straight = (fsm.straightBtn.output == FALLING);
-	uint8_t cross = (fsm.crossBtn.output == FALLING);
+	uint8_t straight = (fsm.straightBtn.output == BTN_FALLING);
+	uint8_t cross = (fsm.crossBtn.output == BTN_FALLING);
 	
 	uint8_t isStateChanged = 0;	// flag to determine if outputs need to update
 	/* Set next state and set flag if state has changed */
 	switch(fsm.state) {
-		case STRAIGHT:
-			if (straight & !cross) {
-				fsm.state = CROSS;
+		case UI_STRAIGHT:
+			if (straight & (!cross)) {
+				fsm.state = UI_CROSS;
 				isStateChanged = 1;
 			}
-			else if (!state & cross) {
-				fsm.state = SUM;
-				isStateChanged = 1;
-			}
-			break;
-		case CROSS:
-			if (straight & !cross) {
-				fsm.state = SUM;
-				isStateChanged = 1;
-			}
-			else if (!straight & cross) {
-				fsm.state = STRAIGHT;
+			else if ((!straight) & cross) {
+				fsm.state = UI_SUM;
 				isStateChanged = 1;
 			}
 			break;
-		case SUM:
-			if (!straight & cross) {
-				fsm.state = STRAIGHT;
+		case UI_CROSS:
+			if (straight & (!cross)) {
+				fsm.state = UI_SUM;
 				isStateChanged = 1;
 			}
-			else if (straight & !cross) {
-				fsm.state = CROSS;
+			else if ((!straight) & cross) {
+				fsm.state = UI_STRAIGHT;
+				isStateChanged = 1;
+			}
+			break;
+		case UI_SUM:
+			if ((!straight) & cross) {
+				fsm.state = UI_STRAIGHT;
+				isStateChanged = 1;
+			}
+			else if (straight & (!cross)) {
+				fsm.state = UI_CROSS;
 				isStateChanged = 1;
 			}
 			break;
@@ -220,5 +221,7 @@ struct receiverFSM initReceiver(uint8_t detect0_pin,
 	receiver.detect0State; // = READ CURRENT POSITION
 	receiver.detect1State; // = READ CURRENT POSITION
 	
-	receiver.state = // FIGURE OUT STATE
+	receiver.state; // FIGURE OUT STATE
+	
+	return receiver;
 }

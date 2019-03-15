@@ -14,7 +14,7 @@ PIN INITIALIZATIONS
 		Return:	none
 */
 void setPinInitializationRegisters(pin_t *pinArray[], enum pinConfig configuration) {
-	for (uint8_t i = 0; i < sizeof(pinArray), i++) {
+	for (uint8_t i = 0; i < sizeof(pinArray)/sizeof(pin_t*, i++) {
 	
 		/* Set the configuration registers for the pin */
 		switch(configuration) {

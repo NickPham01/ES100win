@@ -1,6 +1,7 @@
 #ifndef UTILITIES
 #define UTILITIES
 
+unsigned long millis(void);
 
 uint8_t	readVccSwitch(uint8_t receiver);
 void	setVcc(uint8_t receiver, uint8_t voltage);
