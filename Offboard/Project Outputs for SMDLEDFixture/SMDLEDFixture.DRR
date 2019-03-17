@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------------------------------------
-NCDrill File Report For: SMDLEDFixture.PcbDoc   3/13/2019  9:31:10 PM
+NCDrill File Report For: SMDLEDFixture.PcbDoc   3/17/2019  6:33:47 PM
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Layer Pair : Top Layer to Bottom Layer
@@ -7,8 +7,8 @@ ASCII RoundHoles File : SMDLEDFixture.TXT
 
 Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
 ----------------------------------------------------------------------------------------------------------------------------------
-T1      35mil (0.9mm)                                             Round             2         PTH        0.00inch (0.00mm)
+T1      35mil (0.9mm)                                             Round             12        PTH        0.00inch (0.00mm)
 ----------------------------------------------------------------------------------------------------------------------------------
-Totals                                                                              2
+Totals                                                                              12
 
 Total Processing Time (hh:mm:ss) : 00:00:00
