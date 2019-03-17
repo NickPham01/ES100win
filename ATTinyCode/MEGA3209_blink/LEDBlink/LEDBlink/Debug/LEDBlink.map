@@ -187,7 +187,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x182
+.text           0x00000000      0x16e
  *(.vectors)
  .vectors       0x00000000       0x90 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega3209/avrxmega3/crtatmega3209.o
                 0x00000000                __vector_default
@@ -282,13 +282,13 @@ END GROUP
                 0x000000ba                __vector_20
                 0x000000be                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x000000be       0xc0 main.o
+ .text.main     0x000000be       0xac main.o
                 0x000000be                main
-                0x0000017e                . = ALIGN (0x2)
+                0x0000016a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000017e        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
-                0x0000017e                _exit
-                0x0000017e                exit
+ .fini9         0x0000016a        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+                0x0000016a                _exit
+                0x0000016a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -307,101 +307,101 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000017e        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ .fini0         0x0000016a        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000182                _etext = .
+                0x0000016e                _etext = .
 
-.rodata         0x00004182       0x81 load address 0x00000182
+.rodata         0x0000416e       0x81 load address 0x0000016e
  *(.rodata)
  *(.rodata*)
- .rodata.pinF6  0x00004182        0x3 main.o
-                0x00004182                pinF6
- .rodata.pinF5  0x00004185        0x3 main.o
-                0x00004185                pinF5
- .rodata.pinF4  0x00004188        0x3 main.o
-                0x00004188                pinF4
- .rodata.pinF3  0x0000418b        0x3 main.o
-                0x0000418b                pinF3
- .rodata.pinF2  0x0000418e        0x3 main.o
-                0x0000418e                pinF2
- .rodata.pinF1  0x00004191        0x3 main.o
-                0x00004191                pinF1
- .rodata.pinF0  0x00004194        0x3 main.o
-                0x00004194                pinF0
- .rodata.pinE3  0x00004197        0x3 main.o
-                0x00004197                pinE3
- .rodata.pinE2  0x0000419a        0x3 main.o
-                0x0000419a                pinE2
- .rodata.pinE1  0x0000419d        0x3 main.o
-                0x0000419d                pinE1
- .rodata.pinE0  0x000041a0        0x3 main.o
-                0x000041a0                pinE0
- .rodata.pinD7  0x000041a3        0x3 main.o
-                0x000041a3                pinD7
- .rodata.pinD6  0x000041a6        0x3 main.o
-                0x000041a6                pinD6
- .rodata.pinD5  0x000041a9        0x3 main.o
-                0x000041a9                pinD5
- .rodata.pinD4  0x000041ac        0x3 main.o
-                0x000041ac                pinD4
- .rodata.pinD3  0x000041af        0x3 main.o
-                0x000041af                pinD3
- .rodata.pinD2  0x000041b2        0x3 main.o
-                0x000041b2                pinD2
- .rodata.pinD1  0x000041b5        0x3 main.o
-                0x000041b5                pinD1
- .rodata.pinD0  0x000041b8        0x3 main.o
-                0x000041b8                pinD0
- .rodata.pinC7  0x000041bb        0x3 main.o
-                0x000041bb                pinC7
- .rodata.pinC6  0x000041be        0x3 main.o
-                0x000041be                pinC6
- .rodata.pinC5  0x000041c1        0x3 main.o
-                0x000041c1                pinC5
- .rodata.pinC4  0x000041c4        0x3 main.o
-                0x000041c4                pinC4
- .rodata.pinC3  0x000041c7        0x3 main.o
-                0x000041c7                pinC3
- .rodata.pinC2  0x000041ca        0x3 main.o
-                0x000041ca                pinC2
- .rodata.pinC1  0x000041cd        0x3 main.o
-                0x000041cd                pinC1
- .rodata.pinC0  0x000041d0        0x3 main.o
-                0x000041d0                pinC0
- .rodata.pinB5  0x000041d3        0x3 main.o
-                0x000041d3                pinB5
- .rodata.pinB4  0x000041d6        0x3 main.o
-                0x000041d6                pinB4
- .rodata.pinB3  0x000041d9        0x3 main.o
-                0x000041d9                pinB3
- .rodata.pinB2  0x000041dc        0x3 main.o
-                0x000041dc                pinB2
- .rodata.pinB1  0x000041df        0x3 main.o
-                0x000041df                pinB1
- .rodata.pinB0  0x000041e2        0x3 main.o
-                0x000041e2                pinB0
- .rodata.pinA7  0x000041e5        0x3 main.o
-                0x000041e5                pinA7
- .rodata.pinA6  0x000041e8        0x3 main.o
-                0x000041e8                pinA6
- .rodata.pinA5  0x000041eb        0x3 main.o
-                0x000041eb                pinA5
- .rodata.pinA4  0x000041ee        0x3 main.o
-                0x000041ee                pinA4
- .rodata.pinA3  0x000041f1        0x3 main.o
-                0x000041f1                pinA3
- .rodata.pinA2  0x000041f4        0x3 main.o
-                0x000041f4                pinA2
- .rodata.pinA1  0x000041f7        0x3 main.o
-                0x000041f7                pinA1
- .rodata.pinA0  0x000041fa        0x3 main.o
-                0x000041fa                pinA0
+ .rodata.pinF6  0x0000416e        0x3 main.o
+                0x0000416e                pinF6
+ .rodata.pinF5  0x00004171        0x3 main.o
+                0x00004171                pinF5
+ .rodata.pinF4  0x00004174        0x3 main.o
+                0x00004174                pinF4
+ .rodata.pinF3  0x00004177        0x3 main.o
+                0x00004177                pinF3
+ .rodata.pinF2  0x0000417a        0x3 main.o
+                0x0000417a                pinF2
+ .rodata.pinF1  0x0000417d        0x3 main.o
+                0x0000417d                pinF1
+ .rodata.pinF0  0x00004180        0x3 main.o
+                0x00004180                pinF0
+ .rodata.pinE3  0x00004183        0x3 main.o
+                0x00004183                pinE3
+ .rodata.pinE2  0x00004186        0x3 main.o
+                0x00004186                pinE2
+ .rodata.pinE1  0x00004189        0x3 main.o
+                0x00004189                pinE1
+ .rodata.pinE0  0x0000418c        0x3 main.o
+                0x0000418c                pinE0
+ .rodata.pinD7  0x0000418f        0x3 main.o
+                0x0000418f                pinD7
+ .rodata.pinD6  0x00004192        0x3 main.o
+                0x00004192                pinD6
+ .rodata.pinD5  0x00004195        0x3 main.o
+                0x00004195                pinD5
+ .rodata.pinD4  0x00004198        0x3 main.o
+                0x00004198                pinD4
+ .rodata.pinD3  0x0000419b        0x3 main.o
+                0x0000419b                pinD3
+ .rodata.pinD2  0x0000419e        0x3 main.o
+                0x0000419e                pinD2
+ .rodata.pinD1  0x000041a1        0x3 main.o
+                0x000041a1                pinD1
+ .rodata.pinD0  0x000041a4        0x3 main.o
+                0x000041a4                pinD0
+ .rodata.pinC7  0x000041a7        0x3 main.o
+                0x000041a7                pinC7
+ .rodata.pinC6  0x000041aa        0x3 main.o
+                0x000041aa                pinC6
+ .rodata.pinC5  0x000041ad        0x3 main.o
+                0x000041ad                pinC5
+ .rodata.pinC4  0x000041b0        0x3 main.o
+                0x000041b0                pinC4
+ .rodata.pinC3  0x000041b3        0x3 main.o
+                0x000041b3                pinC3
+ .rodata.pinC2  0x000041b6        0x3 main.o
+                0x000041b6                pinC2
+ .rodata.pinC1  0x000041b9        0x3 main.o
+                0x000041b9                pinC1
+ .rodata.pinC0  0x000041bc        0x3 main.o
+                0x000041bc                pinC0
+ .rodata.pinB5  0x000041bf        0x3 main.o
+                0x000041bf                pinB5
+ .rodata.pinB4  0x000041c2        0x3 main.o
+                0x000041c2                pinB4
+ .rodata.pinB3  0x000041c5        0x3 main.o
+                0x000041c5                pinB3
+ .rodata.pinB2  0x000041c8        0x3 main.o
+                0x000041c8                pinB2
+ .rodata.pinB1  0x000041cb        0x3 main.o
+                0x000041cb                pinB1
+ .rodata.pinB0  0x000041ce        0x3 main.o
+                0x000041ce                pinB0
+ .rodata.pinA7  0x000041d1        0x3 main.o
+                0x000041d1                pinA7
+ .rodata.pinA6  0x000041d4        0x3 main.o
+                0x000041d4                pinA6
+ .rodata.pinA5  0x000041d7        0x3 main.o
+                0x000041d7                pinA5
+ .rodata.pinA4  0x000041da        0x3 main.o
+                0x000041da                pinA4
+ .rodata.pinA3  0x000041dd        0x3 main.o
+                0x000041dd                pinA3
+ .rodata.pinA2  0x000041e0        0x3 main.o
+                0x000041e0                pinA2
+ .rodata.pinA1  0x000041e3        0x3 main.o
+                0x000041e3                pinA1
+ .rodata.pinA0  0x000041e6        0x3 main.o
+                0x000041e6                pinA0
  .rodata.UILEDs
-                0x000041fd        0x6 main.o
-                0x000041fd                UILEDs
+                0x000041e9        0x6 main.o
+                0x000041e9                UILEDs
  *(.gnu.linkonce.r*)
 
-.data           0x00803000       0x60 load address 0x00000203
+.data           0x00803000       0x60 load address 0x000001ef
                 0x00803000                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -418,8 +418,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x00000203                __data_load_start = LOADADDR (.data)
-                0x00000263                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000001ef                __data_load_start = LOADADDR (.data)
+                0x0000024f                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00803060        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -498,34 +498,34 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x2a8e
+.debug_info     0x00000000     0x2a3c
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x2245 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega3209/avrxmega3/crtatmega3209.o
- .debug_info    0x00002245      0x849 main.o
+ .debug_info    0x00002245      0x7f7 main.o
 
-.debug_abbrev   0x00000000     0x2229
+.debug_abbrev   0x00000000     0x2205
  *(.debug_abbrev)
  .debug_abbrev  0x00000000     0x2074 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega3209/avrxmega3/crtatmega3209.o
- .debug_abbrev  0x00002074      0x1b5 main.o
+ .debug_abbrev  0x00002074      0x191 main.o
 
-.debug_line     0x00000000      0x366
+.debug_line     0x00000000      0x34b
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x16f C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega3209/avrxmega3/crtatmega3209.o
- .debug_line    0x0000016f      0x1f7 main.o
+ .debug_line    0x0000016f      0x1dc main.o
 
 .debug_frame    0x00000000       0x24
  *(.debug_frame)
  .debug_frame   0x00000000       0x24 main.o
 
-.debug_str      0x00000000     0x1317
+.debug_str      0x00000000     0x132b
  *(.debug_str)
  .debug_str     0x00000000      0xeb5 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega3209/avrxmega3/crtatmega3209.o
- .debug_str     0x00000eb5      0x462 main.o
-                                0x496 (size before relaxing)
+ .debug_str     0x00000eb5      0x476 main.o
+                                0x4aa (size before relaxing)
 
-.debug_loc      0x00000000      0x18f
+.debug_loc      0x00000000      0x12c
  *(.debug_loc)
- .debug_loc     0x00000000      0x18f main.o
+ .debug_loc     0x00000000      0x12c main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -545,9 +545,9 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x40
+.debug_ranges   0x00000000       0x28
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x40 main.o
+ .debug_ranges  0x00000000       0x28 main.o
 
 .debug_macro
  *(.debug_macro)

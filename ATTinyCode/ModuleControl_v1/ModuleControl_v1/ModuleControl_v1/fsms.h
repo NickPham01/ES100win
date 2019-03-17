@@ -19,7 +19,7 @@ struct debounceBTN {
 	enum btnOutputs output;
 	};
 struct debounceBTN initDebounce(uint8_t button_pin);
-void updateDebounce(struct debounceBTN btn);
+void updateDebounce(struct debounceBTN *btn);
 
 /***************************************************************
 	UI/Routing
@@ -53,8 +53,8 @@ struct singleOutputUI initUI(uint8_t straight_button,
 								uint8_t cross_LED,
 								uint8_t sum_rly,
 								uint8_t ab_rly);
-void setUIFSMOutputs(struct singleOutputUI fsm);
-void updateUIFSM(struct singleOutputUI fsm);
+void setUIFSMOutputs(struct singleOutputUI *fsm);
+void updateUIFSM(struct singleOutputUI *fsm);
 
 /***************************************************************
 	Receiver
@@ -79,15 +79,18 @@ struct receiverFSM {
 	uint8_t detect0State;
 	uint8_t detect1State;
 	
+	enum receiverState prev_state;
 	enum receiverState state;
 	};
 	
-	struct receiverFSM initReceiver(uint8_t detect0_pin,
-									uint8_t detect1_pin,
-									uint8_t vcc_slt0_pin,
-									uint8_t vcc_slt1_pin,
-									uint8_t vcc9_pin,
-									uint8_t vcc12_pin,
-									uint8_t rly_pin);
+struct receiverFSM initReceiver(uint8_t detect0_pin,
+								uint8_t detect1_pin,
+								uint8_t vcc_slt0_pin,
+								uint8_t vcc_slt1_pin,
+								uint8_t vcc9_pin,
+								uint8_t vcc12_pin,
+								uint8_t rly_pin);
+void updateReceiver(struct receiverFSM *receiver);
+void setReceiverOutputs(struct receiverFSM *receiver);
 
 #endif

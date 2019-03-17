@@ -9,30 +9,22 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "constants.h"
-#include "initialize.h"
 
-int main(void)
+int main (void)
 {
-	// Set LED GPIOs to be outputs
-	for (uint8_t i = 0; i < sizeof(UILEDs); i++) {
-		uint8_t pin = UILEDs[i];
-		bitON(PINS[pin]->p_port->DIR, PINS[pin]->num);	// set the Direction register bits
+	/* Configure LED0 pin as output */
+	for (uint8_t i = 0; i < 6; i++) {
+		PINS[UILEDs[i]]->p_port->DIRSET = 1<<(PINS[UILEDs[i]]->num);
 	}
 	
+	uint16_t delay_time = 500;	// ms
 	
-    /* Loop */
-    while (1) 
-    {
-		for (uint8_t i = 0; i < sizeof(UILEDs); i++) {
-			uint8_t pin = UILEDs[i];
-			gpioON(pin);
+	while(1) {
+		for (uint8_t i = 0; i < 6; i++) {
+			PINS[UILEDs[i]]->p_port->OUTSET = 1<<(PINS[UILEDs[i]]->num);
+			_delay_ms(delay_time);
+			PINS[UILEDs[i]]->p_port->OUTCLR = 1<<(PINS[UILEDs[i]]->num);
+			_delay_ms(delay_time);
 		}
-		_delay_ms(100);
-		for (uint8_t i = 0; i < sizeof(UILEDs); i++) {
-			uint8_t pin = UILEDs[i];
-			gpioOFF(pin);
-		}
-		_delay_ms(100);
-    }
-}
+	}}
 

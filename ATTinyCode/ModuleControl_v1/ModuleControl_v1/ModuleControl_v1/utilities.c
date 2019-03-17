@@ -36,21 +36,8 @@ unsigned long millis(void) {
 		Output:	none
 		Return: uint8_t voltage setting
 */
-uint8_t readVccSwitch(uint8_t receiver) {
-	/* Get the pins corresponding to the given receiver */
-	uint8_t vcc_slt_0;
-	uint8_t vcc_slt_1;
-	switch (receiver) {
-		case 1:
-			vcc_slt_0 = VCC_SLT0_1_PIN;
-			vcc_slt_1 = VCC_SLT1_1_PIN;
-			break;
-		case 2:
-			vcc_slt_0 = VCC_SLT0_2_PIN;
-			vcc_slt_1 = VCC_SLT1_2_PIN;
-			break;
-	}
-	
+uint8_t readVccSwitch(uint8_t vcc_slt_0, uint8_t vcc_slt_1) {
+
 	/* Read the sensors */
 	uint8_t data = 0x00;
 	data |= gpioREAD(vcc_slt_0) << 0;	// set 0th bit
@@ -79,21 +66,8 @@ uint8_t readVccSwitch(uint8_t receiver) {
 		Output:	sets GPIO to control adjustable regulator VCC output
 		Return: none
 */
-void setVcc(uint8_t receiver, uint8_t voltage) {
-	/* Get the PORT and pinMacros associated with the receiver */
-	uint8_t vcc_9;
-	uint8_t vcc_12;
-	switch(receiver){
-		case 1:
-			vcc_9	= VCC_9V_1_PIN;
-			vcc_12	= VCC_12V_1_PIN;
-			break;
-		case 2:
-			vcc_9	= VCC_9V_2_PIN;
-			vcc_12	= VCC_12V_2_PIN;
-			break;
-	}
-	
+void setVcc(uint8_t vcc_9, uint8_t vcc_12, uint8_t voltage) {
+
 	/* Set pins PA0 and PA1 (Vcc select) */
 	switch(voltage) {
 		case 12:
@@ -124,12 +98,12 @@ void setVcc(uint8_t receiver, uint8_t voltage) {
 
 void activateRelay(uint8_t rly_p, uint8_t rly_n, uint8_t relayState) {
 	switch(relayState) {
-		case BYPASS:
+		case RLY_BYPASS:
 			// (p, n) = (1, 0)
 			gpioON(rly_p);
 			gpioOFF(rly_n);
 			break;
-		case ACTIVE:
+		case RLY_ACTIVE:
 			// (p, n) = (0, 1)
 			gpioOFF(rly_p);
 			gpioON(rly_n);
@@ -186,7 +160,7 @@ void setRelay(uint8_t relayNum, uint8_t relayState) {
 	unsigned long startTime = millis();
 	while (millis() - startTime < 15) {}
 		
-	activateRelay(rly_p, rly_n, IDLE);
+	activateRelay(rly_p, rly_n, RLY_IDLE);
 }
 
 /* 
@@ -236,7 +210,7 @@ uint8_t readPlateDetect(uint8_t receiver) {
 uint8_t readUISW(void) {
 	uint8_t data = 0x00;
 	
-	for (uint8_t i = 0; i < sizeof(UIswitches), i++) {
+	for (uint8_t i = 0; i < numUIswitches; i++) {
 		uint8_t pin = UIswitches[i];
 		data |= gpioREAD(pin) << i;	// set ith bit
 	}
@@ -253,10 +227,10 @@ uint8_t readUISW(void) {
 */
 void setLED(uint8_t led, uint8_t state) {
 	uint8_t pin = UILEDs[led];
-	if state {
-		gpioON(PINS[pin]);
+	if (state) {
+		gpioON(pin);
 	}
 	else {
-		gpioOFF(PINS[pin])
+		gpioOFF(pin);
 	}
 }

@@ -205,8 +205,8 @@ const pin_t *PINS[48] = {
 #define bitOFF(REGISTER, BIT)	REGISTER &= ~(1<<BIT)
 #define bitREAD(BYTE, BIT)		((BYTE & (1<<BIT)) >> BIT)
 
-#define gpioON(PIN)				bitON(PINS[PIN]->p_port->OUT, PINS[PIN]->num)
-#define gpioOFF(PIN)			bitOFF(PINS[PIN]->p_port->OUT, PINS[PIN]->num)
-#define gpioREAD(PIN)			bitREAD(PINS[PIN]->p_port->IN, PINS[PIN]->num)
+#define gpioON(pin)				PINS[pin]->p_port->OUTSET	= 1<<(PINS[pin]->num)
+#define gpioOFF(PIN)			PINS[pin]->p_port->OUTCLR	= 1<<(PINS[pin]->num)
+#define gpioREAD(PIN)			PINS[pin]->p_port->IN		= 1<<(PINS[pin]->num)
 
 #endif

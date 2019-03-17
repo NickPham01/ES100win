@@ -6,7 +6,7 @@
 /*
 	uC settings
 */
-#define F_CPU 16000000UL  // 16 MHz
+#define F_CPU 1000000UL  // 16 MHz
 
 
 /*
@@ -39,7 +39,8 @@ enum btnOutputs		{BTN_IDLE, BTN_RISING, BTN_FALLING};	// RISING = depress, FALLI
 #define UI_SW1_PIN		5
 #define UI_SW2_PIN		6
 #define UI_SW3_PIN		7
-const uint8_t UIswitches[] = {UI_SW0_PIN, UI_SW1_PIN, UI_SW2_PIN, UI_SW3_PIN};
+const uint8_t UIswitches[]		= {UI_SW0_PIN, UI_SW1_PIN, UI_SW2_PIN, UI_SW3_PIN};
+const uint8_t numUIswitches		= 4;
 
 // UI LEDs
 #define UI_LED0_PIN		44
@@ -48,7 +49,8 @@ const uint8_t UIswitches[] = {UI_SW0_PIN, UI_SW1_PIN, UI_SW2_PIN, UI_SW3_PIN};
 #define UI_LED3_PIN		47
 #define UI_LED4_PIN		48
 #define UI_LED5_PIN		1
-const uint8_t UILEDs[] = {UI_LED0_PIN, UI_LED1_PIN, UI_LED2_PIN, UI_LED3_PIN, UI_LED4_PIN, UI_LED5_PIN};
+const uint8_t UILEDs[]			= {UI_LED0_PIN, UI_LED1_PIN, UI_LED2_PIN, UI_LED3_PIN, UI_LED4_PIN, UI_LED5_PIN};
+const uint8_t numUILEDs			= 6;
 
 // Routing (Relays)
 #define K1P_PIN			13
@@ -59,7 +61,8 @@ const uint8_t UILEDs[] = {UI_LED0_PIN, UI_LED1_PIN, UI_LED2_PIN, UI_LED3_PIN, UI
 #define K3N_PIN			26
 #define K4P_PIN			33
 #define K4N_PIN			32
-const uint8_t routingPins[] = {K1P_PIN, K1N_PIN, K2P_PIN, K2N_PIN, K3P_PIN, K3N_PIN, K4P_PIN, K4N_PIN};
+const uint8_t routingPins[]		= {K1P_PIN, K1N_PIN, K2P_PIN, K2N_PIN, K3P_PIN, K3N_PIN, K4P_PIN, K4N_PIN};
+const uint8_t numRoutingPins	= 8;
 
 // Receiver 1
 #define VCC_9V_1_PIN	10
@@ -70,8 +73,10 @@ const uint8_t routingPins[] = {K1P_PIN, K1N_PIN, K2P_PIN, K2N_PIN, K3P_PIN, K3N_
 #define VCC_SLT1_1_PIN	17
 #define DETECT0_1_PIN	18
 #define DETECT1_1_PIN	19
-const uint8_t r1outPins[]	= {VCC_9V_1_PIN, VCC_12V_1_PIN, RLYP_1_PIN, RLYN_1_PIN};
-const uint8_t r1inPins[]	= {VCC_SLT0_1_PIN, VCC_SLT1_1_PIN, DETECT0_1_PIN, DETECT1_1_PIN};
+const uint8_t r1outPins[]		= {VCC_9V_1_PIN, VCC_12V_1_PIN, RLYP_1_PIN, RLYN_1_PIN};
+const uint8_t r1inPins[]		= {VCC_SLT0_1_PIN, VCC_SLT1_1_PIN, DETECT0_1_PIN, DETECT1_1_PIN};
+const uint8_t numr1outPins		= 4;
+const uint8_t numr1inPins		= 4;
 
 
 // Receiver 2
@@ -83,20 +88,24 @@ const uint8_t r1inPins[]	= {VCC_SLT0_1_PIN, VCC_SLT1_1_PIN, DETECT0_1_PIN, DETEC
 #define VCC_SLT1_2_PIN	35
 #define DETECT0_2_PIN	38
 #define DETECT1_2_PIN	39
-const uint8_t r2outPins[]	= {VCC_9V_2_PIN, VCC_12V_2_PIN, RLYP_2_PIN, RLYN_2_PIN};
-const uint8_t r2inPins[]	= {VCC_SLT0_2_PIN, VCC_SLT1_2_PIN, DETECT0_2_PIN, DETECT1_2_PIN};
+const uint8_t r2outPins[]		= {VCC_9V_2_PIN, VCC_12V_2_PIN, RLYP_2_PIN, RLYN_2_PIN};
+const uint8_t r2inPins[]		= {VCC_SLT0_2_PIN, VCC_SLT1_2_PIN, DETECT0_2_PIN, DETECT1_2_PIN};
+const uint8_t numr2outPins		= 4;
+const uint8_t numr2inPins		= 4;
 
 // I2C
 #define SDA_PIN			36
 #define SCL_PIN			37
-const uint8_t i2cPins[] = {SDA_PIN, SCL_PIN};
+const uint8_t i2cPins[]			= {SDA_PIN, SCL_PIN};
+const uint8_t numI2CPins		= 2;
 
 // Unused connectors
 #define MISC0_PIN		2		// P16 pin 1
 #define MISC1_PIN		3		// P16 pin 2
 #define MISC2_PIN		8		// P15 pin 1
 #define MICS3_PIN		9		// P15 pin 2
-const uint8_t unusedPins[] = {MISC0_PIN, MISC1_PIN, MISC2_PIN, MICS3_PIN};
+const uint8_t unusedPins[]		= {MISC0_PIN, MISC1_PIN, MISC2_PIN, MICS3_PIN};
+const uint8_t numUnusedPins		= 4;
 
 // pin info: array of structs which each contain pin offset, port, ...
 typedef struct pin_t{
@@ -210,8 +219,8 @@ const pin_t *PINS[48] = {
 #define bitOFF(REGISTER, BIT)	REGISTER &= ~(1<<BIT)
 #define bitREAD(BYTE, BIT)		((BYTE & (1<<BIT)) >> BIT)
 
-#define gpioON(PIN)				bitON(PINS[PIN]->p_port->OUT, PINS[PIN]->num)
-#define gpioOFF(PIN)			bitOFF(PINS[PIN]->p_port->OUT, PINS[PIN]->num)
-#define gpioREAD(PIN)			bitREAD(PINS[PIN]->p_port->IN, PINS[PIN]->num)
+#define gpioON(pin)				PINS[pin]->p_port->OUTSET = 1<<(PINS[pin]->num)
+#define gpioOFF(pin)			PINS[pin]->p_port->OUTCLR = 1<<(PINS[pin]->num)
+#define gpioREAD(pin)			bitREAD(PINS[pin]->p_port->IN, PINS[pin]->num)
 
 #endif

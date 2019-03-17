@@ -4,7 +4,7 @@
 #ifndef INITIALIZE_H
 #define INITIALIZE_H
 
-void setPinInitializationRegisters(pin_t *pinArray[], enum pinConfig configuration);
+void setPinInitializationRegisters(const uint8_t pinArray[], uint8_t num_pins, enum pinConfig configuration);
 void initializePins(void);
 
 void setupMillis(void);
