@@ -1,4 +1,6 @@
 /* fsms.c */
+
+#include <stdint.h>
 #include <util/atomic.h>
 #include "constants.h"
 #include "utilities.h"
@@ -261,7 +263,8 @@ void updateReceiver(struct receiverFSM *receiver) {
 				*btnStates[i] = 1;		// now active high: 1 means the switch has been depressed and the plate is inserted
 				isDetectPinChanged = 1;
 				break;
-			// otherwise do nothing
+			default:					// else do nothing
+				break;
 		}
 	}
 	

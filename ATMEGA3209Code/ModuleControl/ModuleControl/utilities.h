@@ -2,6 +2,8 @@
 #ifndef UTILITIES
 #define UTILITIES
 
+
+
 unsigned long millis(void);
 
 uint8_t	readVccSwitch(uint8_t vcc_slt_0, uint8_t vcc_slt_1);

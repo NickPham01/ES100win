@@ -1,4 +1,5 @@
 /* utilities.c */
+#include <stdint.h>
 #include <avr/interrupt.h>
 #include <util/atomic.h>
 #include "utilities.h"
@@ -97,8 +98,8 @@ void setVcc(uint8_t vcc_9, uint8_t vcc_12, uint8_t voltage) {
 		Return: none
 */
 
-void activateRelay(uint8_t rly_p, uint8_t rly_n, uint8_t relayState) {
-	switch(relayState) {
+void activateRelay(uint8_t rly_p, uint8_t rly_n, enum relayState rly_state) {
+	switch(rly_state) {
 		case RLY_BYPASS:
 			// (p, n) = (1, 0)
 			gpioON(rly_p);
@@ -124,7 +125,7 @@ void activateRelay(uint8_t rly_p, uint8_t rly_n, uint8_t relayState) {
 		Output:	sets single-coil latching relay by asserting the set/reset signal for 15 ms then asserting idle
 		Return:	none
 */
-void setRelay(uint8_t relayNum, uint8_t relayState) {
+void setRelay(uint8_t relayNum, enum relayState rly_state) {
 	/* Get the pins corresponding to the desired relay */
 	uint8_t rly_p;
 	uint8_t rly_n;
@@ -155,8 +156,10 @@ void setRelay(uint8_t relayNum, uint8_t relayState) {
 			break;
 	}
 	
+	
+	
 	/* Assert the switch signal, block for 15ms, then assert idle */
-	activateRelay(rly_p, rly_n, relayState);
+	activateRelay(rly_p, rly_n, rly_state);
 	
 	unsigned long startTime = millis();
 	while (millis() - startTime < 15) {}

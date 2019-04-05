@@ -1,4 +1,5 @@
 /* initialize.c */
+#include <stdint.h>
 #include "constants.h"
 #include "initialize.h"
 
